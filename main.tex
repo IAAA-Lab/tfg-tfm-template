@@ -1,0 +1,188 @@
+\documentclass[a4paper]{report}
+
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{framed}
+\usepackage{lipsum}  
+\usepackage{appendix}
+
+
+\usepackage{titlesec}
+  \titleformat{\chapter}[hang]
+    {\normalfont\huge\bfseries}
+    {\thechapter}{20pt}{\huge}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+ % Bibliografía
+\usepackage[sorting=none]{biblatex}
+\addbibresource{refs.bib}
+
+ % Glosario
+\usepackage{glossaries}
+\makeglossaries
+
+\colorlet{shadecolor}{blue!5}
+
+\newenvironment{zaguancolor}
+  {\def\FrameCommand{\fboxsep=\topsep\colorbox{shadecolor}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+ {\endMakeFramed}
+
+\newenvironment{zaguan}
+  {\begin{zaguancolor}}
+  {\end{zaguancolor}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		PORTADA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+
+    \vspace*{5mm}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=9.52cm]{img/unizar}
+    \end{figure}
+
+    \vspace*{10mm}
+
+    \fontsize{28pt}{28pt}\selectfont
+
+    \begin{center}
+        \setlength{\fboxsep}{3.4mm}
+        \adjustbox{minipage=16.4cm,cfbox=blue,center}{%
+            \begin{center}Trabajo Fin de Grado/Máster\end{center}
+        }
+    \end{center}
+
+    \vspace*{18.7mm}
+
+
+    \fontsize{20pt}{20pt}\selectfont
+    \begin{center} Título del trabajo y subtítulos del trabajo\end{center}
+    \begin{center} Title and subtitle (if required)\end{center}
+
+    \vspace*{1cm}
+    \begin{center}
+        \fontsize{12pt}{12pt}\selectfont
+        \center{Autor/es}
+
+        \vspace*{3.65mm}
+        \fontsize{18pt}{18pt}\selectfont
+        \center{Nombre y apellido del/los autor/es}
+        \vspace*{2cm}
+        \fontsize{12pt}{12pt}\selectfont
+        \center{Director/es}
+        \vspace*{3.56mm}
+        \fontsize{14pt}{14pt}\selectfont
+        \center{Nombre y apellido del/los director/es}
+    \end{center}
+
+
+    \vspace*{16.45mm}
+    \fontsize{12pt}{12pt}\selectfont
+    \begin{center}
+        Facultad / Escuela\\
+        Año\\
+    \end{center}
+
+    \begin{zaguan}
+        \textbf{Repositorio de la Universidad de Zaragoza - Zaguan http://zaguan.unizar.es}
+    \end{zaguan}
+
+    \setcounter{footnote}{1}
+    \renewcommand{\thefootnote}{\arabic{footnote}}
+    \pagenumbering{gobble}
+
+\end{titlepage}
+
+\clearpage\mbox{}\clearpage
+
+\pagenumbering{Roman}
+\setcounter{page}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		AGRADECIMIENTOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Agradecimientos}
+\vspace{1cm}
+\lipsum[2-4]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		RESUMEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Resumen}
+\vspace{1cm}
+\lipsum[2-4]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		TABLA DE CONTENIDOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\chapter{Introducción}
+\lipsum[2-4]
+
+\chapter{Análisis}
+\lipsum[2-4]
+
+\chapter{Diseño}
+\lipsum[2-4]
+
+\chapter{Desarrollo}
+\lipsum[2-4]
+
+\chapter{Pruebas}
+\lipsum[2-4]
+
+\chapter{Conclusiones}
+\lipsum[2-4]
+
+\printglossary[nonumberlist,type=\acronymtype,title={Acrónimos}]
+
+\clearpage
+\glsaddall
+\printglossary[nonumberlist]
+
+\clearpage
+\printbibliography[heading=bibintoc,title={Referencias}]
+
+\newpage
+\renewcommand\listtablename{Lista de Tablas}
+\listoftables
+
+\newpage
+\renewcommand\listfigurename{Lista de Figuras}
+\listoffigures
+
+\begin{appendices}
+
+\chapter{First}
+\lipsum[2-4]
+
+\end{appendices}
+
+\end{document}
