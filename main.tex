@@ -1,16 +1,19 @@
-\documentclass[a4paper]{report}
+\documentclass[a4paper,12pt]{report}
 
 \usepackage[spanish,es-tabla]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
-
 \usepackage{graphicx}
 \usepackage{adjustbox}
 \usepackage{xcolor}
 \usepackage{lmodern}
 \usepackage{framed}
 \usepackage{lipsum}  
-\usepackage{appendix}
+\usepackage{parskip}
+
+\usepackage[toc,page]{appendix}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
 
 
 \usepackage{titlesec}
@@ -29,8 +32,12 @@
  }
 
  % Bibliografía
-\usepackage[sorting=none]{biblatex}
-\addbibresource{refs.bib}
+\usepackage[%
+    sorting=none,
+    style=ieee,
+    citestyle=numeric-comp
+]{biblatex}
+\addbibresource{biblatex-examples.bib}
 
  % Glosario
 \usepackage{glossaries}
@@ -103,7 +110,9 @@
         Año\\
     \end{center}
 
+    \vspace*{16.45mm}
     \begin{zaguan}
+        \centering
         \textbf{Repositorio de la Universidad de Zaragoza - Zaguan http://zaguan.unizar.es}
     \end{zaguan}
 
@@ -144,6 +153,22 @@
 \setcounter{page}{1}
 
 \chapter{Introducción}
+\section{Como citar}
+
+El fichero \texttt{biblatex-exmples.bib} contiene muchos ejemplos de citas. 
+Todos ellos están en la Bibliografía ya que hemos usado el comando \LaTeX{} \texttt{\textbackslash{}nocite\{*\}}.
+
+A continuación vamos a ver distintos tipos de citas:
+\begin{itemize}
+    \item Esta es una cita simple~\cite{westfahl:space}.
+    \item Esta es una cita con una pre-nota y una post-nota~\cite[pre-nota][post-nota]{westfahl:space}.
+    \item Esta es una cita con una pre-nota y un número de página~\cite[pre-nota][42]{westfahl:space}.
+    \item Esta es una cita con un número de página~\cite[][42]{westfahl:space}.
+    \item Esta es una cita múltiple sin rango~\cites{westfahl:space, aksin}.
+    \item Esta es una cita múltiple con rango~\cites{westfahl:space, angenendt, aksin}.
+\end{itemize} 
+
+\section{Lore impsum}
 \lipsum[2-4]
 
 \chapter{Análisis}
@@ -168,6 +193,7 @@
 \printglossary[nonumberlist]
 
 \clearpage
+\nocite{*}
 \printbibliography[heading=bibintoc,title={Referencias}]
 
 \newpage
@@ -180,7 +206,10 @@
 
 \begin{appendices}
 
-\chapter{First}
+\chapter{Primero}
+\lipsum[2-4]
+
+\chapter{Segundo}
 \lipsum[2-4]
 
 \end{appendices}
