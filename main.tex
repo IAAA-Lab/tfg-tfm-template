@@ -10,6 +10,7 @@
 \usepackage{framed}
 \usepackage{lipsum}  
 \usepackage{parskip}
+\usepackage{listings}
 
 \usepackage[toc,page]{appendix}
 \renewcommand{\appendixtocname}{Anexos}
@@ -148,28 +149,50 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \tableofcontents
+
+\newpage
+\renewcommand\listtablename{Lista de Tablas}
+\listoftables
+
+\newpage
+\renewcommand\listfigurename{Lista de Figuras}
+\listoffigures
+
 \newpage
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
+
 \chapter{Introducción}
-\section{Como citar}
 
-El fichero \texttt{biblatex-exmples.bib} contiene muchos ejemplos de citas. 
-Todos ellos están en la Bibliografía ya que hemos usado el comando \LaTeX{} \texttt{\textbackslash{}nocite\{*\}}.
+Breve introducción. Aquí introducimos brevemente el TFG. 
 
-A continuación vamos a ver distintos tipos de citas:
-\begin{itemize}
-    \item Esta es una cita simple~\cite{westfahl:space}.
-    \item Esta es una cita con una pre-nota y una post-nota~\cite[pre-nota][post-nota]{westfahl:space}.
-    \item Esta es una cita con una pre-nota y un número de página~\cite[pre-nota][42]{westfahl:space}.
-    \item Esta es una cita con un número de página~\cite[][42]{westfahl:space}.
-    \item Esta es una cita múltiple sin rango~\cites{westfahl:space, aksin}.
-    \item Esta es una cita múltiple con rango~\cites{westfahl:space, angenendt, aksin}.
-\end{itemize} 
+\section{Introducción a XXX}
 
-\section{Lore impsum}
-\lipsum[2-4]
+Introducción al contexto, al problema, a la tecnología que caracteriza al TFG.
+
+\section{Situación de partida}
+
+Descripción del estado inicial del problema o situación a resolver o mejorar con el TFG.
+
+\section{Objetivos}
+
+Objetivos del TFG. Deben ser SMART (Specific, Measurable, Achievable, Relevant, Time-bound).
+
+
+\section{Alcance}
+
+Alcance del TFG. Qué se va a hacer y qué no se va a hacer.
+
+Se resume en cuáles son los resultados del proyecto que se presentan en esta memoria 
+y qué resultados podrían entenderse que deberían ser parte del proyecto, pero que 
+no se han realizado o se ha decidido no hacer.
+
+\section{Metodología}
+
+Describes los pasos que se realizan en el proyecto.
+
+Describes cómo se corresponden con la organización de la memoria
 
 \chapter{Análisis}
 \lipsum[2-4]
@@ -196,20 +219,60 @@ A continuación vamos a ver distintos tipos de citas:
 \nocite{*}
 \printbibliography[heading=bibintoc,title={Referencias}]
 
-\newpage
-\renewcommand\listtablename{Lista de Tablas}
-\listoftables
-
-\newpage
-\renewcommand\listfigurename{Lista de Figuras}
-\listoffigures
-
 \begin{appendices}
 
-\chapter{Primero}
-\lipsum[2-4]
+\chapter{Recomendaciones generales}
 
-\chapter{Segundo}
+\begin{itemize}
+\item No hay que olvidar que el lector de la memoria no tiene por qué ser un experto en el tema.
+\item La memoria se redacta después de haber finalizado el proyecto, por lo que 
+no se debe hablar de lo que se va a hacer sino de lo que se ha hecho.
+\item El uso del tiempo verbal futuro debe ser mínimo.
+\end{itemize}
+
+\chapter{Cómo citar}
+
+El fichero \texttt{biblatex-exmples.bib} contiene muchos ejemplos de citas. 
+Todos ellos están en la Bibliografía, ya que hemos usado el comando \LaTeX{} \texttt{\char`\\nocite\{*\}}.
+
+A continuación vamos a ver distintos tipos de citas:
+\begin{itemize}
+    \item Esta es una cita simple~\cite{westfahl:space}.
+    \item Esta es una cita con una pre-nota y una post-nota~\cite[pre-nota][post-nota]{westfahl:space}.
+    \item Esta es una cita con una pre-nota y un número de página~\cite[pre-nota][42]{westfahl:space}.
+    \item Esta es una cita con un número de página~\cite[][42]{westfahl:space}.
+    \item Esta es una cita múltiple sin rango~\cites{westfahl:space, aksin}.
+    \item Esta es una cita múltiple con rango~\cites{westfahl:space, angenendt, aksin}.
+\end{itemize} 
+
+\chapter{Cómo generar texto de relleno}
+
+El paquete \texttt{lipsum} es un paquete de LaTeX diseñado para generar texto de relleno, comúnmente conocido como ``Lorem Ipsum''.
+Este tipo de texto se utiliza para llenar espacios de muestra en documentos y maquetaciones cuando el contenido real aún no está disponible. 
+El paquete \texttt{lipsum} proporciona comandos simples para insertar párrafos o fragmentos de texto de relleno en diferentes partes de tu documento.
+
+El paquete \texttt{lipsum}, ya está incluido en el documento.
+
+\begin{lstlisting}[language={[LaTeX]TeX},backgroundcolor=\color{gray!10!white}]
+\usepackage{lipsum} 
+\end{lstlisting}
+
+Una vez que has incluido el paquete, puedes utilizar los siguientes comandos en tu documento para insertar texto de relleno:
+
+\begin{itemize}
+  \item \texttt{\char`\\lipsum[1-n]}: Inserta los primeros \texttt{n} párrafos de texto de relleno.
+  \item \texttt{\char`\\lipsum[n-m]}: Inserta los párrafos del \texttt{n} al \texttt{m} de texto de relleno.
+  \item \texttt{\char`\\lipsum}: Inserta un rango de párrafos, por defecto del párrafo 1 al 7 (equivale a \texttt{\char`\\lipsum[1-7]}).
+\end{itemize}
+
+A continuación, te muestro un ejemplo básico de cómo puedes usar el paquete \texttt{lipsum} en un documento \LaTeX{}:
+
+\begin{lstlisting}[language={[LaTeX]TeX},backgroundcolor=\color{gray!10!white}]
+\lipsum[2-4] 
+\end{lstlisting}
+  
+Este ejemplo generará el siguiente párrafo:
+
 \lipsum[2-4]
 
 \end{appendices}
