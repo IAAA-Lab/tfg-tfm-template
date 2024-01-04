@@ -32,12 +32,26 @@
  top=20mm,
  }
 
- % Bibliografía
+
+
+% Bibliografía
 \usepackage[%
     sorting=none,
     style=ieee,
     citestyle=numeric-comp
 ]{biblatex}
+
+% break URLs in bibliography
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburllcpenalty}{9000}
+
+% stretchable space between characters for better break URLs
+% see https://github.com/plk/biblatex/issues/850
+\setlength{\biburlnumskip}{0mu plus 1mu}
+\setlength{\biburlucskip}{0mu plus 1mu}
+\setlength{\biburllcskip}{0mu plus 1mu}
+
 \addbibresource{biblatex-examples.bib}
 
  % Glosario
@@ -234,7 +248,7 @@ no se debe hablar de lo que se va a hacer sino de lo que se ha hecho.
 \chapter{Cómo citar}
 
 El fichero \texttt{biblatex-exmples.bib} contiene muchos ejemplos de citas. 
-Todos ellos están en la Bibliografía, ya que hemos usado el comando \LaTeX{} \texttt{\char`\\nocite\{*\}}.
+Todos ellos están en la Bibliografía, ya que hemos usado el comando \LaTeX{} \texttt{\textbackslash nocite\{*\}}.
 
 A continuación vamos a ver distintos tipos de citas:
 \begin{itemize}
