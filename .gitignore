@@ -12,7 +12,13 @@
 *.toc
 *.run.xml
 *.synctex.gz
+*.glg
+*.gls
+*.tdo
 
 *.pdf
 
 .DS_Store
+__pycache__
+
+.vscode

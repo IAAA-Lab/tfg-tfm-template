@@ -5,25 +5,26 @@
 \usepackage{csquotes}
 \usepackage{graphicx}
 \usepackage{adjustbox}
-\usepackage{xcolor}
+\usepackage[pdftex,dvipsnames]{xcolor}
 \usepackage{lmodern}
 \usepackage{framed}
 \usepackage{lipsum}  
 \usepackage{parskip}
 \usepackage{listings}
 
+% Anexos
 \usepackage[toc,page]{appendix}
 \renewcommand{\appendixtocname}{Anexos}
 \renewcommand{\appendixpagename}{Anexos}
 
-
+% Titulos de capítulo mejorados
 \usepackage{titlesec}
-  \titleformat{\chapter}[hang]
-    {\normalfont\huge\bfseries}
-    {\thechapter}{20pt}{\huge}
+\titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter}{20pt}{\huge}
 
+% Comando para la fuente por defecto
 \renewcommand{\familydefault}{\sfdefault}
 
+% Márgenes y tamaño de página
 \usepackage{geometry}
  \geometry{
  a4paper,
@@ -31,8 +32,6 @@
  left=20mm,
  top=20mm,
  }
-
-
 
 % Bibliografía
 \usepackage[%
@@ -54,10 +53,6 @@
 
 \addbibresource{biblatex-examples.bib}
 
- % Glosario
-\usepackage{glossaries}
-\makeglossaries
-
 \colorlet{shadecolor}{blue!5}
 
 \newenvironment{zaguancolor}
@@ -68,6 +63,39 @@
 \newenvironment{zaguan}
   {\begin{zaguancolor}}
   {\end{zaguancolor}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		TODO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xargs}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+\listoftodos
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		GLOSARIO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[nopostdot,toc]{glossaries}
+\makeglossaries
+
+\longnewglossaryentry{TFG}
+{
+    type=\acronymtype,
+    name={Trabajo Fin de Grado},
+}
+{
+    Este documento
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		INICIO DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -179,7 +207,7 @@
 
 \chapter{Introducción}
 
-Breve introducción. Aquí introducimos brevemente el TFG. 
+Breve introducción. Aquí introducimos brevemente el \gls{TFG}. 
 
 \section{Introducción a XXX}
 
@@ -245,6 +273,14 @@ no se debe hablar de lo que se va a hacer sino de lo que se ha hecho.
 \item El uso del tiempo verbal futuro debe ser mínimo.
 \end{itemize}
 
+\chapter{Notas}
+
+\unsure{Este es un comentario sin resolver.}
+\change[inline]{Este es un comentario que necesita ser cambiado.}
+\info{Este es un comentario informativo.}
+\improvement{Este es un comentario que necesita ser mejorado.}
+\thiswillnotshow{Este comentario no se mostrará.}
+
 \chapter{Cómo citar}
 
 El fichero \texttt{biblatex-exmples.bib} contiene muchos ejemplos de citas. 
@@ -289,6 +325,8 @@ A continuación, te muestro un ejemplo básico de cómo puedes usar el paquete \
 Este ejemplo generará el siguiente párrafo:
 
 \lipsum[2-4]
+
+\printglossaries
 
 \end{appendices}
 
